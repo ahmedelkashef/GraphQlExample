@@ -1,6 +1,6 @@
 package com.plcoding.graphqlcountriesapp.domain.usecase
 
-import com.plcoding.graphqlcountriesapp.data.CountryMappers
+import com.plcoding.graphqlcountriesapp.data.map
 import com.plcoding.graphqlcountriesapp.domain.model.DetailedCountry
 import com.plcoding.graphqlcountriesapp.domain.reposistory.CountryRepo
 
@@ -9,6 +9,6 @@ class GetCountriesUseCase(
 ) {
 
     suspend fun execute(code :String): DetailedCountry? {
-            return CountryMappers.map(countryRepo.getCountries(code).data)
+            return countryRepo.getCountries(code)
         }
     }

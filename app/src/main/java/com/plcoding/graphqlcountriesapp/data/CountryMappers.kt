@@ -1,22 +1,19 @@
 package com.plcoding.graphqlcountriesapp.data
 
 import com.plcoding.CountryQuery
+import com.plcoding.graphqlcountriesapp.Response
 import com.plcoding.graphqlcountriesapp.data.dto.CountriesDto
 import com.plcoding.graphqlcountriesapp.domain.model.DetailedCountry
-
-object CountryMappers {
-
-    fun <T> map(data: T): DetailedCountry? {
-        return when (data) {
-            is CountryQuery.Country -> {
-                data.toDetailedCountry()
-            }
-            is CountriesDto -> {
-                data.toDetailedCountry()
-            }
-            else -> {
-                null
-            }
+fun Response<*>.map():DetailedCountry? {
+    return when (data) {
+        is CountryQuery.Country -> {
+            data.toDetailedCountry()
+        }
+        is CountriesDto -> {
+            data.toDetailedCountry()
+        }
+        else -> {
+            null
         }
     }
 }
